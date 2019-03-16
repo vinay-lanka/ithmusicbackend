@@ -1,0 +1,19 @@
+<html>
+<body>
+<table>
+  <tr>
+    <th>Name</th><th>Artist</th><th>Upvotes</th><th>To upvote - </th>
+  </tr>
+
+  <% for (var i = 0; i < result.length; i++) { %>
+    <tr>
+      <td><%= result[i].Song %></td>
+      <td><%= result[i].Artist %></td>
+      <td><%= result[i].Upvotes %></td>
+      <td><%= result[i]._id %></td>
+      <td><form action='/play/<%= result[i]._id %>', method="get"><input type="submit" value="Play!"></td>
+    </tr>
+  <% } %>
+</table>
+</body>
+</html>
