@@ -2,11 +2,11 @@ const { MongoClient, ObjectId } = require('mongodb');
 const express = require('express')
 const app = express()
 var bodyParser = require('body-parser');
-const port = 3000
+const port = process.env.PORT || 3000;
 
 require('dotenv').config();
 
-var url = "mongodb://localhost:27017/musicdb";
+var url = process.env.MONGO_URL;
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
