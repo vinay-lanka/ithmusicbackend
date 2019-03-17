@@ -7,7 +7,7 @@ const port = 3000
 var url = "mongodb://localhost:27017/musicdb";
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
 
 app.post('/submit', function(req, res){
     var details = req.body;
@@ -36,7 +36,7 @@ app.get('/list', function(req, res){
       }
       console.log('Connected to Mongo Database Server');
       const db = client.db('musicdb');
-      db.collection("songs").find({}).toArray(function(err, result) {
+      db.collection("songs").find({}).sort({Upvotes: -1}).toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
       });
