@@ -4,6 +4,8 @@ const app = express()
 var bodyParser = require('body-parser');
 const port = 3000
 
+require('dotenv').config();
+
 var url = "mongodb://localhost:27017/musicdb";
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
